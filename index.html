@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Company Query</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+            width: 70%;
+            max-width: 500px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 25px;
+            border: 2px solid #007bff;
+            outline: none;
+            transition: border-color 0.3s ease;
+            text-align: center;
+        }
+
+        input[type="text"]::placeholder {
+            color: #aaa;
+            font-style: italic;
+        }
+
+        input[type="text"]:focus {
+            border-color: #0056b3;
+        }
+
+        input[type="submit"] {
+            padding: 15px 25px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0px 5px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        input[type="submit"]:hover {
+            background-color: #28a745;
+            box-shadow: 0px 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        h2 {
+            margin-top: 40px;
+            color: #333;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+            width: auto;
+            max-width: 90%; /* Updated to 90% */
+            height: auto;
+            max-height: 90vh; /* Updated to 90vh */
+            overflow-y: auto; /* Added for scrolling if content overflows */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter your query:</h1>
+    <form action="/query" method="post">
+        <input type="text" name="query" placeholder="Search here" required>
+        <br>
+        <input type="submit" value="Search">
+    </form>
+    
+    {% if answer %}
+    <div class="result-card">
+        <h2>Result:</h2>
+        {{ answer|safe }}
+    </div>
+    {% endif %}
+</body>
+</html>
